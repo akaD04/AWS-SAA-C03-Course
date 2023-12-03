@@ -218,7 +218,7 @@ Pricing based on:
 - Networking
 
 Extra cost for any commercial software the instance deploys with.
-
+ 
 #### 1.2.5.2. Running State
 
 Charged for all four categories.
@@ -279,12 +279,17 @@ Login to the instance using an SSH key pair.
 Private Key - Stored on local machine to initiate connection.
 Public Key - AWS places this key on the instance.
 
+With Linux: use private and public key to authenticate
+With Windows: private private key to gain access to gain access to the local administrator password of the instance and then connect using Remote Desktop Protocal
+
 ### 1.2.6. S3 (Default Storage Service)
 
 Global Storage platform. Runs from all regions and is a public service.
-Can be accessed anywhere from the internet with an unlimited amount of users.
+Can be accessed anywhere from the internet with an unlimited amount of users. This means no need to select a region since it is a global service.
 
 This should be the default storage platform
+
+Can be accessed using different methods like GUI, command line, or HTTP.
 
 S3 is an object storage, not file, or block storage.
 You can't mount an S3 Bucket.
@@ -307,11 +312,11 @@ Other components:
 #### 1.2.6.2. Buckets
 
 - Created in a specific AWS Region.
-- Data has a primary home region. Will not leave this region unless told.
+- Data has a primary home region. Will not leave this region unless configured so.
 - Blast Radius = Region
 - Unlimited number of Objects
-- Name is globally unique
-- All objects are stored within the bucket at the same level.
+- Name of the bucket is globally unique. Must be 3-63 characters, all lowercase, no underscores. 100 soft limit, 1000 hard per account.
+- S3 doesn't have a complex structure, but a flat structure instead. Meaning all objects are stored within the bucket at the same level.
 
 If the objects name starts with a slash such as `/old/Koala1.jpg` the UI will
 present this as a folder. In actuality this is not true, there are no folders.
