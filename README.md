@@ -293,6 +293,7 @@ Can be accessed using different methods like GUI, command line, or HTTP.
 
 S3 is an object storage, not file, or block storage.
 You can't mount an S3 Bucket.
+Can be accessed via UI/CLI/API/HTTP
 
 #### 1.2.6.1. Objects
 
@@ -319,7 +320,21 @@ Other components:
 - S3 doesn't have a complex structure, but a flat structure instead. Meaning all objects are stored within the bucket at the same level.
 
 If the objects name starts with a slash such as `/old/Koala1.jpg` the UI will
-present this as a folder. In actuality this is not true, there are no folders.
+present this as a folder `old` containing `Koala1.jpg` file. In reality this is not true, there are no folders.
+
+Summary:
+- Are private by default.
+- 3-63 characters, all lower case, no underscores
+- Start iwht a lowercase letter or a number
+- Can't be IP formatted. For e.g: 1.1.1.1
+- Buckets. Limit: 100 soft limit, 1000 hard limit per account
+- Key = Name, value = data
+
+Patterns & Anti-patterns
+- S3 is an object storage system - not file or block. Meaning if you are required to access to all data, then yes. If you want to access a network file system like Windows, then file-based storage instead of S3, which has no file system. 
+- It is not block storage (virtual hard disks), so can't be mounted as a mount point. Block storage also requires single-user access, which isn't available in S3.
+- Great for large scale data storage, distribution, or upload.
+- Should be default input and/or output to many AWS products. If there is a number of options where to store data, S3 should be the default option.
 
 ### 1.2.7. CloudFormation Basics
 
